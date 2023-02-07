@@ -15,12 +15,18 @@ public class Section
         name = lines[0].Substring(1, lines[0].Length - 2).Split(' ')[1];
         lines = lines.GetRange(1, lines.Count - 1);
 
+        /* GET RID OF ALL EMPTY LINES */
+        for (int i = lines.Count - 1; i >= 0; i--)
+        {
+            if (lines[i] == "" || lines[i].StartsWith("#")) lines.RemoveAt(i);
+        }
+
         bool parsingChoice = false;
         int choiceStart = -1;
 
         for (int i = 0; i < lines.Count; i++)
         {
-            if (lines[i] == "" || lines[i].StartsWith("#")) continue;
+            
             if (lines[i].StartsWith("<CHOICE"))
             {
                 choiceStart = i;
@@ -29,7 +35,6 @@ public class Section
 
             if (parsingChoice)
             {
-
                 if (lines[i] == "</CHOICE>")
                 {
                     this.lines.Add(string.Join('\n', lines.GetRange(choiceStart, i - choiceStart)));

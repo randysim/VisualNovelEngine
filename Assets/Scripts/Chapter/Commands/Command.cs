@@ -26,7 +26,7 @@ public abstract class Command
 
     public virtual void OnFinish()
     {
-        if (GameManager.instance.Debug)
+        if (GameManager.instance.DebugMode)
         {
             Debug.Log(Name() + " finished running!");
         }

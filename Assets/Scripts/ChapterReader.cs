@@ -104,6 +104,8 @@ public class ChapterReader : MonoBehaviour
         
         sections = secs;
         reading = true;
+
+        GameManager.instance.OnChapterLoad();
     }
 
     public IEnumerator ReadLine()

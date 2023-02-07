@@ -94,7 +94,8 @@ public class DialogueSystem : MonoBehaviour
         {
             // Finish writing by end of voice
             AudioClip v = ChapterReader.instance.Voice().GetComponent<AudioSource>().clip;
-            StartCoroutine(Write(((float) v.length / (float) target.Length) + 0.01f)); 
+            float betweenTime = v.length / target.Length;
+            StartCoroutine(Write(betweenTime)); 
         }
         
     }
@@ -159,10 +160,13 @@ public class DialogueSystem : MonoBehaviour
         if (close)
         {
             CharacterManager.instance.ShowCloseCharacter(fileName);
-        } else
+        } 
+        /*
+        else
         {
             CharacterManager.instance.HideCloseCharacter();
         }
+        */
 
         Sprite s = CharacterManager.instance.GetSprite(fileName + "." + "HEADSHOT");
         headshot.sprite = s;

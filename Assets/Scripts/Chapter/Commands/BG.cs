@@ -22,10 +22,22 @@ public class BG : Command
     {
         DialogueSystem.instance.Disable();
 
-        if (args.Length < 2)
+        if (args[1] == "NONE")
         {
+            // update screen
+            string transition = "INSTANT";
+            float duration = 0f;
+            if (args.Length >= 3)
+            {
+                transition = args[2];
+                duration = 0.5f; // default duration
+                if (args.Length >= 4)
+                {
+                    duration = float.Parse(args[3]);
+                }
+            }
             // DEFAULT FADE OUT 0.5s
-            BackgroundManager.instance.HideBackground("FADE", 0.5f);
+            BackgroundManager.instance.HideBackground(transition, duration);
         }
         else
         {

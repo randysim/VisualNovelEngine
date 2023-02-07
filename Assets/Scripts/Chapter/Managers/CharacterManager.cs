@@ -8,6 +8,11 @@ public class CharacterManager : MonoBehaviour
     public static CharacterManager instance;
 
     [SerializeField]
+    private float yOffset = 50;
+    [SerializeField]
+    private float yOffsetClose = 300;
+
+    [SerializeField]
     private GameObject screenCharacters;
     private RectTransform screen;
     [SerializeField]
@@ -67,7 +72,7 @@ public class CharacterManager : MonoBehaviour
         {
             if (slot == characterPositions[i])
             {
-                HideCharacter(characters[i], transition, duration);
+                HideCharacter(characters[i].Split(".")[0], transition, duration);
                 break;
             }
         }
@@ -188,11 +193,11 @@ public class CharacterManager : MonoBehaviour
 
         if (slot == 1)
         {
-            rect.anchoredPosition = new Vector2(w / 2, h / 2);
+            rect.anchoredPosition = new Vector2(w / 2, (h / 2) - yOffset);
         }
         else
         {
-            rect.anchoredPosition = new Vector2((w / 2) - 20 + (slot - 1) * (screen.rect.width / 4), h / 2);
+            rect.anchoredPosition = new Vector2((w / 2) - 20 + (slot - 1) * (screen.rect.width / 4), (h / 2) - yOffset);
         }
     } 
 
@@ -203,7 +208,7 @@ public class CharacterManager : MonoBehaviour
         float w = (screen.rect.width + 80) / (2.5f);
         float h = w * (1080 / 500);
         rect.sizeDelta = new Vector2(w, h);
-        rect.anchoredPosition = new Vector2(screen.rect.width/2, h / 2);
+        rect.anchoredPosition = new Vector2(screen.rect.width/2, (h / 2) - yOffsetClose);
     }
 
     public Sprite GetSprite(string name)

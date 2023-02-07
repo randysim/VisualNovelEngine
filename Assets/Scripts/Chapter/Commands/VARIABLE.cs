@@ -15,6 +15,7 @@ public class VARIABLE : Command
     {
         // replace args. no brackets
         args = c.Split(' ');
+        name = "VARIABLE";
     }
 
     public override float Execute()

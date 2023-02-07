@@ -8,9 +8,12 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public VariableSystem Variables;
-    public bool Debug = true;
+    public bool DebugMode = true;
 
     public bool inChapter = true;
+
+    [SerializeField]
+    private GameObject credits;
 
     private void Awake()
     {
@@ -53,5 +56,17 @@ public class GameManager : MonoBehaviour
         }
 
         return c;
+    }
+
+    public void OnChapterLoad()
+    {
+        Debug.Log("Chapter Loaded!");
+        StartCoroutine(ChapterReader.instance.ReadLine());
+    }
+
+    public void OnGameEnd()
+    {
+        /* RUN CREDITS */
+        credits.SetActive(true);
     }
 }

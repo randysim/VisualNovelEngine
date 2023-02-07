@@ -1,0 +1,306 @@
+<SECTION intro>
+
+# SET VARIABLE
+${kasumiPath} = 0
+${mayumiPath} = 0
+
+<BG homeroom FADE 1>
+<BGMUSIC PLAY bubbletea FADE 2>
+<WAIT 1>
+
+YOU It’s my first day at Kaisei High School. I arrived at my homeroom a few minutes early.
+
+YOU There’s two girls sitting next to me. We were all childhood friends.
+
+YOU On my left is Kasumi.
+
+<SHOW KASUMI.NEUTRAL 2 FADE 1>
+<WAIT 1>
+
+YOU Kasumi is the captain of the girls swim team. She’s really strong and could probably beat you in an arm wrestle.
+
+YOU Not only is she really athletic, but she is also really good at academics. 
+
+YOU She always helps me study for our history tests but I always end up flopping… somehow… but that’s just because I'm bad. Not because Kasumi is a bad teacher or anything!
+
+YOU She’s smart, beautiful, and stro… ok nothing, moving on.
+
+<HIDE KASUMI FADE 1>
+<SHOW MAYUMI.NEUTRAL 3 FADE 1>
+
+YOU On my right is Mayumi. 
+
+YOU She’s well. She’s just a kid…
+
+YOU She likes to eat a lot of sashimi at the conveyor belt sushi bar. She also likes to read a lot of visual novels (not this one though cause it sucks).
+
+YOU However, she is awful at school. I don’t think she ever studied for tests in middle school and um. Her homework, she does her homework 5 minutes before class starts. But she’s also really cool!
+
+YOU I gave her that hat for her 11th birthday, and she hasn’t taken it off since… which is kind of weird but…
+
+YOU Moving on!
+
+<HIDE MAYUMI>
+<SHOW KASUMI.NEUTRAL,MAYUMI.NEUTRAL 2,3 FADE 2>
+
+KASUMI.NEUTRAL.CLOSE hey! How was your summer break!
+
+<CHOICE how was your break?>
+<OPTION Not that great. I was studying for the SAT>
+
+KASUMI.NEUTRAL.CLOSE aw that sucks. I already took it last year and got a perfect score.
+MAYUMI.ANGRY.CLOSE wow, what a tryhard nerd.
+${kasumiPath} += 1
+
+</OPTION>
+<OPTION Really good! I went with Mayumi to the movies.>
+
+KASUMI.NEUTRAL.CLOSE Tsk. I guess you forgot about me. But that’s alright, I forgive you.
+MAYUMI.NEUTRAL.CLOSE that’s because I’m more favored!
+${mayumiPath} += 1
+
+</OPTION>
+</CHOICE>
+
+<CHOICE which girl do you like better? (important)>
+<OPTION Mayumi>
+${mayumiPath} += 1
+</OPTION>
+<OPTION Kasumi>
+${kasumiPath} += 1
+</OPTION>
+</CHOICE>
+
+<VOICE narrator1>
+NARRATOR your choice will impact the future.
+
+<UNCLOSE>
+
+YOU Anyways, guys, what do you guys want to do after school?
+
+KASUMI.NEUTRAL.CLOSE Let’s go surfboarding! The weather is about to get cold
+MAYUMI.ANGRY.CLOSE hey. Come on. I don’t wanna get wet. Let’s go get some bubble tea.
+KASUMI.BLANK.CLOSE but bubble tea is boring… we already did that like so many times.
+MAYUMI.ANGRY.CLOSE yeah but I don’t wanna get wet!
+KASUMI.NEUTRAL.CLOSE i think we should let YOU decide since you were the one that asked the question in the first place.
+
+<CHOICE what do you wanna do?>
+<OPTION Go get bubble tea>
+
+${mayumiPath} += 1
+<UNCLOSE>
+<GOTO bubbletea>
+</OPTION>
+<OPTION Go surfboarding>
+
+${kasumiPath} += 1
+<UNCLOSE>
+
+<GOTO surfboard>
+
+</OPTION>
+</CHOICE>
+</SECTION>
+
+<SECTION surfboard>
+<SHOW MAYUMI.ANGRY 3>
+MAYUMI.ANGRY i really thought I could trust you. But I guess you hate me.
+<HIDE MAYUMI,KASUMI FADE 2>
+<BG NONE FADE 2>
+<WAIT 2>
+<BG beach FADE 2>
+<BGMUSIC PLAY beach FADE 2>
+<WAIT 2>
+
+YOU wow the beach is beautiful
+
+<SHOW MAYUMI.NEUTRAL,KASUMI.NEUTRAL 2,3 FADE 1>
+<WAIT 0.5>
+
+KASUMI.NEUTRAL oh my gawd. I'm in love with the beach
+KASUMI.NEUTRAL (to herself): this would be the perfect place to confess. Only if Mayumi wasn't here.
+
+MAYUMI.ANGRY why did we come here. it is FREEZING. IT IS LITERALLY FALL. WHY ARE WE GOING TO THE BEACH.
+YOU relax... it's not that bad. Just enjoy yourself while we're here
+
+MAYUMI.ANGRY.CLOSE NO I AM NOT ENJOYING MYSELF. I WANT BUBBLE TEA. I AM THIRSTY AND HUNGRY.
+YOU ...
+KASUMI.NEUTRAL ...
+<UNCLOSE>
+
+YOU (to yourself): mayumi has always been such a handful.
+KASUMI.NEUTRAL.CLOSE sooo do you want to play in the water together?
+
+YOU Sure!
+
+MAYUMI.BLANK.CLOSE (to herself): wow look at them, already playing in the water together. HMPFH!
+
+KASUMI.NEUTRAL.CLOSE (to herself): this is my chance. To become something more than friends!
+<UNCLOSE>
+YOU (to yourself): wow, I never noticed how beautiful Kasumi was...
+
+YOU anyways, let's go kasumi!
+
+<HIDE MAYUMI,KASUMI FADE 1>
+<WAIT 1>
+
+<VOICE narrator2>
+NARRATOR you and kasumi play together for hours
+
+<SHOW MAYUMI.NEUTRAL,KASUMI.NEUTRAL 2,3 FADE 1>
+<WAIT 1>
+YOU well, I think it's time we head back!
+KASUMI.BLANK.CLOSE (to herself): I was having so much fun I forgot about the whole confession.
+<UNCLOSE>
+<HIDE MAYUMI,KASUMI FADE 1>
+<GOTO ending>
+
+</SECTION>
+
+<SECTION bubbletea>
+<SHOW KASUMI.ANGRY 2>
+MAYUMI.NEUTRAL lets goo!!
+<HIDE MAYUMI,KASUMI FADE 2>
+<BG NONE FADE 2>
+<WAIT 2>
+<BG bubbletea FADE 2>
+<BGMUSIC PLAY actualbubbletea FADE 2>
+<WAIT 2>
+
+YOU so this is what bubble tea shops in the city are like huh.
+
+<SHOW MAYUMI.NEUTRAL,KASUMI.NEUTRAL 2,3 FADE 1>
+<WAIT 0.5>
+
+You I'm just so grateful that these girls are in my life... I want every day to be like this.
+
+<IF ${mayumiPath} > ${kasumiPath}>
+MAYUMI.NEUTRAL.CLOSE hmm, what drink should I get?
+You ... does it really matter
+MAYUMI.ANGRY.CLOSE OF COURSE IT MATTERS. WHAT DO YOU MEAN???
+
+<CHOICE>
+<OPTION get regular milk tea>
+MAYUMI.ANGRY.CLOSE ... you are so lame
+${mayumiPath} -= 1
+</OPTION>
+<OPTION maybe try the cool new pumpkin flavor>
+MAYUMI.NEUTRAL.CLOSE i think that's a really good idea!
+${mayumiPath} += 1
+</OPTION>
+</CHOICE>
+
+<GOTO gettingTea>
+</IF>
+
+<IF ${kasumiPath} > ${mayumiPath}>
+KASUMI.NEUTRAL.CLOSE i think im gonna just get the normal milk tea.
+MAYUMI.BLANK.CLOSE i can't believe you Kasumi. You're so lame.
+KASUMI.ANGRY.CLOSE shush. I can get what I want
+YOU guys guys, easy now, no need to fight over bubble tea.
+
+MAYUMI.BLANK we're not fighting
+KASUMI.BLANK yeah i don't know where you got that idea from
+
+YOU ANYWAYS
+<GOTO gettingTea>
+</IF>
+</SECTION>
+
+<SECTION gettingTea>
+<UNCLOSE>
+
+YOU i think i'm going to get... the apple flavor.
+
+<SHOW MAYUMI.ANGRY,KASUMI.BLANK 2,3>
+
+KASUMI.BLANK disgusting...
+MAYUMI.BLANK disgusting...
+YOU shush, I can get what I want.
+<HIDE KASUMI,MAYUMI FADE 2>
+<GOTO ending>
+</SECTION>
+
+<SECTION ending>
+<BG NONE FADE 2>
+<BGMUSIC END FADE 2>
+<WAIT 2>
+
+<BG homeroom FADE 1>
+<SHOW KASUMI.NEUTRAL,MAYUMI.NEUTRAL 2,3 FADE 1>
+<BGMUSIC PLAY bubbletea FADE 1>
+<WAIT 1>
+
+YOU ah what a day. that was a lot of fun guys!
+
+<IF ${mayumiPath} > ${kasumiPath}>
+<GOTO mayumiEnding>
+</IF>
+<IF ${kasumiPath} > ${mayumiPath}>
+<GOTO kasumiEnding>
+</IF>
+
+<GOTO noEnding>
+</SECTION>
+
+<SECTION mayumiEnding>
+MAYUMI.NEUTRAL.CLOSE umm, excuse me?
+YOU yes?
+MAYUMI.NEUTRAL.CLOSE i just wanted to say that I,
+MAYUMI.NEUTRAL.CLOSE I
+MAYUMI.NEUTRAL.CLOSE I...
+YOU you what?
+MAYUMI.NEUTRAL.CLOSE I think I really like you and I want to get closer.
+YOU Mayumi, you know, I've felt the same way about you for a really long time. I was waiting for the day you would ask.
+
+KASUMI.ANGRY.CLOSE WAIT ONE SECOND
+KASUMI.ANGRY.CLOSE I DO NOT APPROVE OF THIS
+KASUMI.ANGRY.CLOSE BECAUSE YOU ARE MINE!!!
+
+MAYUMI.BLANK.CLOSE you're not being serious are you
+KASUMI.ANGRY.CLOSE I AM. And back off. You were treated too kindly and now you're making moves like this.
+
+<UNCLOSE>
+
+YOU Kasumi...
+
+KASUMI.ANGRY.CLOSE im sorry, but, starting today, you aren't talking to her anymore.
+
+<UNCLOSE>
+
+<VOICE narrator3>
+NARRATOR and just like that, a childhood friendship, torn to pieces.
+<GOTO endingLogic>
+</SECTION>
+
+<SECTION kasumiEnding>
+KASUMI.NEUTRAL.CLOSE HEY YOU!
+YOU yes?
+KASUMI.ANGRY.CLOSE I LIKE YOU! MARRY ME!
+MAYUMI.BLANK.CLOSE wait what.
+KASUMI.ANGRY.CLOSE I SAID WHAT I SAID. NOW MARRY ME
+YOU ok kasumi. lets get married
+
+<UNCLOSE>
+
+<VOICE narrator4>
+NARRATOR you and kasumi end up living happily ever after.
+<GOTO endingLogic>
+</SECTION>
+
+<SECTION noEnding>
+<VOICE narrator5>
+NARRATOR well, you didn't really favor any particular girl so. Nothing really happened.
+<VOICE narrator6>
+NARRATOR you really are a boring person.
+YOU wha...
+<GOTO endingLogic>
+</SECTION>
+
+<SECTION endingLogic>
+<HIDE KASUMI,MAYUMI FADE 2>
+<BG NONE FADE 2>
+<BGMUSIC END FADE 2>
+<WAIT 2>
+<END>
+</SECTION>
