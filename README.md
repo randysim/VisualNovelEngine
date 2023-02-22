@@ -2,7 +2,7 @@
 
 Custom Visual Novel engine made in Unity (C#)
 
-Comes with a demo visual novel.
+Comes with a demo visual novel. ( does not come with the music )
 
 To make your own visual novel, replace the demo in the Resource folder.
 
